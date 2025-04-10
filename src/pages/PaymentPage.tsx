@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Tabs } from 'antd';
+import { Tabs, Spin } from 'antd'; // Added Spin import
 import { Link } from 'react-router-dom'; // Added import for Link
 import StripeForm from './components/StripeForm';
 import AlipayForm from './components/AlipayForm';
@@ -9,8 +9,17 @@ import './PaymentPage.css';
 
 const PaymentPage: React.FC = () => {
   const [selectedMethod, setSelectedMethod] = useState<string>('alipay');
+  const [loading, setLoading] = useState<boolean>(false); // Added loading state
 
   const totalAmount = 100; // Example total amount
+
+  const handleTabChange = (key: string) => {
+    setLoading(true); // Start loading
+    setTimeout(() => {
+      setSelectedMethod(key);
+      setLoading(false); // Stop loading after a delay
+    }, 500); // Simulate loading delay
+  };
 
   const renderForm = () => {
     switch (selectedMethod) {
@@ -39,7 +48,7 @@ const PaymentPage: React.FC = () => {
       </div>
       <Tabs
         defaultActiveKey="alipay"
-        onChange={(key) => setSelectedMethod(key)}
+        onChange={handleTabChange} // Updated to use handleTabChange
         items={[
           { 
             key: 'alipay', 
@@ -82,7 +91,9 @@ const PaymentPage: React.FC = () => {
           },
         ]}
       />
-      <div className="form-container">{renderForm()}</div>
+      <Spin spinning={loading}> {/* Added Spin wrapper */}
+        <div className="form-container">{renderForm()}</div>
+      </Spin>
     </div>
   );
 };
