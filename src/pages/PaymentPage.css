@@ -1,0 +1,51 @@
+.payment-page {
+  padding: 24px;
+  background: #fff;
+  max-width: 600px;
+  margin: 50px auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+  margin-top: 16px;
+}
+
+.tab-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tab-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.order-list {
+  margin-bottom: 24px;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total-amount {
+  text-align: right;
+  font-weight: bold;
+  margin-top: 8px;
+  margin-bottom: 24px;
+}
+
+.seller-info-link {
+  display: block;
+  margin-top: 8px;
+  color: #1890ff;
+  text-decoration: none;
+}
+
+.seller-info-link:hover {
+  text-decoration: underline;
+}
